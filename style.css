@@ -1,0 +1,87 @@
+:root {
+  --sand: #EFE7DA;
+  --clay: #D9CBB7;
+  --charcoal: #1A1A1A;
+  --gold: #B7A46D;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  background: var(--sand);
+  color: var(--charcoal);
+  line-height: 1.6;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 24px 48px;
+}
+
+.logo {
+  font-family: serif;
+  letter-spacing: 0.3em;
+  font-size: 18px;
+}
+
+.nav a {
+  margin-left: 24px;
+  text-decoration: none;
+  color: var(--charcoal);
+}
+
+.hero {
+  padding: 120px 48px;
+  max-width: 900px;
+}
+
+.hero h1 {
+  font-family: serif;
+  font-size: 64px;
+  margin-bottom: 16px;
+}
+
+.hero-buttons {
+  margin-top: 32px;
+}
+
+.btn {
+  padding: 12px 28px;
+  text-decoration: none;
+  margin-right: 16px;
+  display: inline-block;
+}
+
+.primary {
+  background: var(--charcoal);
+  color: var(--sand);
+}
+
+.secondary {
+  border: 1px solid var(--charcoal);
+  color: var(--charcoal);
+}
+
+.section {
+  padding: 96px 48px;
+  max-width: 900px;
+}
+
+.section.soft {
+  background: var(--clay);
+}
+
+.product-card {
+  margin-top: 32px;
+}
+
+footer {
+  padding: 48px;
+  font-size: 14px;
+}
