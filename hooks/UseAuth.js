@@ -44,3 +44,4 @@ export function useAuth() {
 
   return { user, token, loading, saveAuth, logout };
 }
+
