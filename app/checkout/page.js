@@ -4,7 +4,7 @@ import { useAuth } from "../../hooks/useAuth";
 import { useState } from "react";
 import { useCart } from "../../components/CartContext";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "http://localhost:4000";
+const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "https://admin.siacoffee.com";
 
 const PAYMENT_METHODS = [
   { id: "card", label: "Card", subtitle: "Visa, Mastercard, Amex" },
