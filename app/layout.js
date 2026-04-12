@@ -2,7 +2,7 @@ import "./globals.css";
 import SiteShell from "../components/SiteShell";
 
 export const metadata = {
-  title: "Iyarkai Roast Coffee - Life begins after coffee",
+  title: "Sia Coffee - Life begins after coffee",
   description: "Small-batch specialty coffee roasted to order."
 };
 

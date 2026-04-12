@@ -128,7 +128,7 @@ function ChromeInner({ children }) {
               {/* <span className="logo-dot" /> */}
               <img 
                 src="/assets/img/siacoffeelogo.png"
-                alt="Iyarkai Roast coffee bag and cup"
+                alt="Sia Coffee bag and cup"
                 width="80" />
                 {/* Sia coffee */}
             </div>
@@ -162,7 +162,7 @@ function ChromeInner({ children }) {
       {/* FOOTER */}
       <footer className="page">
         <div className="footer-row">
-          <div>© {currentYear} Iyarkai Coffee. All rights reserved.</div>
+          <div>© {currentYear} Sia Coffee Ltd. All rights reserved.</div>
           <div className="footer-links">
             <Link href="/shop">Shop</Link>
             <Link href="/about">Story</Link>

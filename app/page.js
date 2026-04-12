@@ -13,7 +13,7 @@ export default function HomePage() {
             Small-batch • Ethically sourced • Roasted to order
           </div>
           <p className="hero-subtitle">
-            Iyarkai Roast works directly with growers to bring you beans roasted in tiny batches,
+            Sia Coffee works directly with growers to bring you beans roasted in tiny batches,
             shipped within 24 hours for a cup that tastes bright, sweet, and seriously fresh.
           </p>
           <div className="hero-ctas">
@@ -42,7 +42,7 @@ export default function HomePage() {
             <div className="product-image">
               <img
                 src="/assets/img/hero-bag-mug.png"
-                alt="Iyarkai Roast coffee bag and cup"
+                alt="Sia Coffee coffee bag and cup"
               />
             </div>
             <div className="hero-stats">
@@ -163,7 +163,7 @@ export default function HomePage() {
             <div className="story-kicker">Our story</div>
             <h3>From farm to cup, every step matters.</h3>
             <p>
-              Iyarkai Roast started with a simple obsession: coffee that feels as alive as the sunrise.
+              Sia Coffee started with a simple obsession: coffee that feels as alive as the sunrise.
               We partner with smallholder farmers, pay well above fair-trade, and roast in tiny batches
               so every bag tastes like a moment worth slowing down for.
             </p>
@@ -238,7 +238,7 @@ export default function HomePage() {
         <div className="section-header">
           <div className="section-title">What early sippers are saying</div>
           <p className="section-subtitle">
-            We quietly launched Iyarkai Roast with a small group of coffee lovers. Here’s what they told us.
+            We quietly launched Sia Coffee with a small group of coffee lovers. Here’s what they told us.
           </p>
         </div>
 
@@ -290,7 +290,7 @@ export default function HomePage() {
       <section id="contact" className="newsletter">
         <div className="newsletter-text reveal-on-scroll">
           <h3>Get 10% off your first bag</h3>
-          <p>Join the Iyarkai Brew Club for release drops, brew guides and special offers.</p>
+          <p>Join the Sia Coffee Brew Club for release drops, brew guides and special offers.</p>
         </div>
         <form
           className="newsletter-form"
