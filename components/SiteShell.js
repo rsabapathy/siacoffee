@@ -176,7 +176,7 @@ function ChromeInner({ children }) {
             <a href="#" aria-label="TikTok">
               TT
             </a>
-            <a href="mailto:hello@auroraroast.com" aria-label="Email">
+            <a href="mailto:sale@siacoffee.co.uk" aria-label="Email">
               ✉
             </a>
           </div>

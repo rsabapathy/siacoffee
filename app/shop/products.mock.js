@@ -62,8 +62,8 @@ const FALLBACK_PRODUCTS = [
   },
   {
     _id: "fallback-sampler",
-    slug: "aurora-sampler-pack",
-    name: "Aurora Sampler Pack",
+    slug: "sia-coffee-sampler-pack",
+    name: "sia-coffee Sampler Pack",
     label: "Sampler",
     category: "sampler",
     price: 18,

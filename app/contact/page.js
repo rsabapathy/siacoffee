@@ -82,17 +82,17 @@ export default function ContactPage() {
               <p>
                 <strong>Email</strong>
                 <br />
-                hello@auroraroast.com
+                sale@siacoffee.co.uk
               </p>
 
               <p style={{ marginTop: "0.75rem" }}>
                 <strong>Roastery</strong>
                 <br />
-                Aurora Roast Coffee
+                Sia Coffee
                 <br />
-                123 Roastery Lane
+                45 Lansbury Road
                 <br />
-                London, UK
+                Milton Keynes, UK
               </p>
 
               <p style={{ marginTop: "0.75rem" }}>

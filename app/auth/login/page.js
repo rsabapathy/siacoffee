@@ -42,7 +42,7 @@ export default function LoginPage() {
       <section className="page-hero">
         <h1 className="page-hero-title">Sign in</h1>
         <p className="page-hero-subtitle">
-          Access your Aurora Roast account and breeze through checkout.
+          Access your Sia Coffee account and breeze through checkout.
         </p>
       </section>
 

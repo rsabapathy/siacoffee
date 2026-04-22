@@ -43,7 +43,7 @@ export default function RegisterPage() {
       <section className="page-hero">
         <h1 className="page-hero-title">Create account</h1>
         <p className="page-hero-subtitle">
-          Join Aurora Roast to save your details and speed up checkout next time.
+          Join Sia Coffee  to save your details and speed up checkout next time.
         </p>
       </section>
 

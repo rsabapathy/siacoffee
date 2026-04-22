@@ -6,7 +6,7 @@ export default function AboutPage() {
       <section className="page-hero">
         <h1 className="page-hero-title">Our story &amp; sourcing</h1>
         <p className="page-hero-subtitle">
-          Aurora Roast is a small roastery obsessed with traceable, transparent coffee that
+          Sia Coffee is a small roastery obsessed with traceable, transparent coffee that
           actually makes your mornings feel better.
         </p>
       </section>
@@ -16,9 +16,9 @@ export default function AboutPage() {
           {/* Text column */}
           <div className="reveal-on-scroll">
             <div className="card">
-              <h2 style={{ marginBottom: "0.75rem" }}>Why Aurora?</h2>
+              <h2 style={{ marginBottom: "0.75rem" }}>Why Sia Coffee?</h2>
               <p>
-                Aurora started as a late-night idea between friends who were tired of flat,
+                Sia Coffee started as a late-night idea between friends who were tired of flat,
                 burnt coffee that tasted the same wherever you went. We wanted cups that felt
                 like the first light of day: bright, layered and a little bit special.
               </p>
@@ -29,7 +29,7 @@ export default function AboutPage() {
                 of cooling.
               </p>
               <p>
-                Our name comes from the aurora – those rare streaks of colour in the sky that
+                Our name comes from the Sia Coffee – those rare streaks of colour in the sky that
                 make you pause for a second. We hope our coffee does the same for your
                 mornings.
               </p>
@@ -102,7 +102,7 @@ export default function AboutPage() {
         <div className="subscription">
           <div className="subscription-inner reveal-on-scroll">
             <div className="subscription-highlight">Trade &amp; wholesale</div>
-            <h3>Serving Aurora in your space</h3>
+            <h3>Serving Sia Coffee in your space</h3>
             <p>
               We work with a small group of cafés, offices and creative studios who want
               coffee that starts conversations. If you&apos;re looking for a roasting
