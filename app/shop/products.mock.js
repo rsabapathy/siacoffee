@@ -25,7 +25,7 @@ const FALLBACK_PRODUCTS = [
     price: 14,
     size: "250g",
     notes: "Bergamot, jasmine and peach sweetness.",
-    image: "/assets/img/product-ethiopia.png"
+    image: "/assets/img/prod.png"
   },
   {
     _id: "fallback-ember",
@@ -36,7 +36,7 @@ const FALLBACK_PRODUCTS = [
     price: 13,
     size: "250g",
     notes: "Chocolate, roasted hazelnut and syrupy body.",
-    image: "/assets/img/product-espresso.png"
+    image: "/assets/img/prod.png"
   },
   {
     _id: "fallback-decaf",

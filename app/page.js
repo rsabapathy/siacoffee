@@ -95,7 +95,7 @@ export default function HomePage() {
           <article className="product-card reveal-on-scroll">
             <div className="product-image">
               <img
-                src="/assets/img/product-ethiopia.png"
+                src="/assets/img/prod.png"
                 alt="Single-origin coffee from Ethiopia"
               />
             </div>
@@ -117,7 +117,7 @@ export default function HomePage() {
           <article className="product-card reveal-on-scroll">
             <div className="product-image">
               <img
-                src="/assets/img/product-espresso.png"
+                src="/assets/img/prod.png"
                 alt="Espresso blend coffee"
               />
             </div>
@@ -138,7 +138,7 @@ export default function HomePage() {
 
           <article className="product-card reveal-on-scroll">
             <div className="product-image">
-              <img src="/assets/img/product-decaf.png" alt="Decaf coffee" />
+              <img src="/assets/img/prod.png" alt="Decaf coffee" />
             </div>
             <div className="product-label">Decaf</div>
             <h3 className="product-name">Moonlight Decaf</h3>
