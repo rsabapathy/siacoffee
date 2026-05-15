@@ -21,56 +21,62 @@ export default function CheckoutPage() {
     return null; // or a small skeleton/spinner if you like
   }
   const hasItems = cartCount > 0;
-  
-  async function handleSubmit(e) {
-  e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!hasItems) return;
 
-  if (!hasItems) return;
+    const formData = new FormData(e.currentTarget);
 
-  const formData = new FormData(e.currentTarget);
+    const name = formData.get("name");
+    const email = formData.get("email");
+    const address = {
+      line1: formData.get("address"),
+      city: formData.get("city"),
+      postcode: formData.get("postcode"),
+      country: "UK"
+    };
+    const notes = formData.get("notes") || "";
 
-  const payload = {
-    userId: user ? user.id : null,
-    name: String(formData.get("name") || ""),
-    email: String(formData.get("email") || ""),
-    address: {
-      line1: String(formData.get("address") || ""),
-      city: String(formData.get("city") || ""),
-      postcode: String(formData.get("postcode") || ""),
-      country: "UK",
-    },
-    notes: String(formData.get("notes") || ""),
-    items: cart.map((item) => ({
+    const items = cart.map((item) => ({
+      // assuming you stored product._id in cart as `id`
       productId: item.id,
       name: item.name,
       price: item.price,
       size: item.size,
-      qty: item.qty,
-    })),
-  };
+      qty: item.qty
+    }));
 
-  try {
-    const res = await fetch(`${API_BASE}/api/stripe/create-checkout-session`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(payload),
-    });
+    try {
+      const res = await fetch(`${API_BASE}/api/orders`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          name,
+          address,
+          notes,
+          paymentProvider: "demo", // or "stripe"/"paypal" etc later
+          userId: user ? user.id : null,
+          items
+        })
+      });
 
-    const data = await res.json();
+      const data = await res.json();
 
-    if (!res.ok || !data.url) {
-      alert(data.message || "Could not start Stripe checkout.");
-      return;
+      if (!res.ok) {
+        console.error("Order creation failed:", data);
+        alert(data?.message || "Failed to create order (demo).");
+        return;
+      }
+
+      // success 🎉
+      clearCart();
+      alert("Order saved in MongoDB (demo). Check /admin/orders to see it.");
+    } catch (err) {
+      console.error("Order request failed:", err);
+      alert("Network error while creating order (demo).");
     }
-
-    window.location.href = data.url;
-  } catch (err) {
-    console.error(err);
-    alert("Checkout failed. Please try again.");
-  }
-}
+  };
 
   return (
     <>
