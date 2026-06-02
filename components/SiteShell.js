@@ -27,7 +27,12 @@ function ChromeInner({ children }) {
     removeItem,
     clearCart
   } = useCart();
+  
+  const [mounted, setMounted] = useState(false);
 
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   // Close nav & cart when route changes
   useEffect(() => {
     setNavOpen(false);
@@ -142,7 +147,7 @@ function ChromeInner({ children }) {
                 onClick={() => setCartOpen(true)}
               >
                 <span>🛒</span>
-                {cartCount > 0 && (
+                {mounted && cartCount > 0 && (
                   <span className="cart-badge">{cartCount}</span>
                 )}
               </button>
@@ -162,7 +167,7 @@ function ChromeInner({ children }) {
       {/* FOOTER */}
       <footer className="page">
         <div className="footer-row">
-          <div>© {currentYear} Sia Coffee Ltd. All rights reserved.</div>
+          <div>© {mounted ? new Date().getFullYear() : "2026"} Sia Coffee Ltd. All rights reserved.</div>
           <div className="footer-links">
             <Link href="/shop">Shop</Link>
             <Link href="/about">Story</Link>

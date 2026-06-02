@@ -1,6 +1,6 @@
 "use client";
 
-import { useAuth } from "../../hooks/useAuth";
+import { useAuth } from "../../hooks/UseAuth";
 import { useState } from "react";
 import { useCart } from "../../components/CartContext";
 
@@ -21,62 +21,50 @@ export default function CheckoutPage() {
     return null; // or a small skeleton/spinner if you like
   }
   const hasItems = cartCount > 0;
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!hasItems) return;
+  async function handleSubmit(e) {
+  e.preventDefault();
 
-    const formData = new FormData(e.currentTarget);
+  if (!hasItems) return;
 
-    const name = formData.get("name");
-    const email = formData.get("email");
-    const address = {
-      line1: formData.get("address"),
-      city: formData.get("city"),
-      postcode: formData.get("postcode"),
-      country: "UK"
-    };
-    const notes = formData.get("notes") || "";
+  const formData = new FormData(e.currentTarget);
 
-    const items = cart.map((item) => ({
-      // assuming you stored product._id in cart as `id`
+  const payload = {
+    userId: user ? user.id : null,
+    name: String(formData.get("name") || ""),
+    email: String(formData.get("email") || ""),
+    address: {
+      line1: String(formData.get("address") || ""),
+      city: String(formData.get("city") || ""),
+      postcode: String(formData.get("postcode") || ""),
+      country: "UK",
+    },
+    notes: String(formData.get("notes") || ""),
+    items: cart.map((item) => ({
       productId: item.id,
       name: item.name,
       price: item.price,
       size: item.size,
-      qty: item.qty
-    }));
-
-    try {
-      const res = await fetch(`${API_BASE}/api/orders`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email,
-          name,
-          address,
-          notes,
-          paymentProvider: "demo", // or "stripe"/"paypal" etc later
-          userId: user ? user.id : null,
-          items
-        })
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        console.error("Order creation failed:", data);
-        alert(data?.message || "Failed to create order (demo).");
-        return;
-      }
-
-      // success 🎉
-      clearCart();
-      alert("Order saved in MongoDB (demo). Check /admin/orders to see it.");
-    } catch (err) {
-      console.error("Order request failed:", err);
-      alert("Network error while creating order (demo).");
-    }
+      qty: item.qty,
+    })),
   };
+
+  const res = await fetch(`${API_BASE}/api/stripe/create-checkout-session`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
+
+  const data = await res.json();
+
+  if (!res.ok || !data.url) {
+    alert(data.message || "Could not start Stripe checkout.");
+    return;
+  }
+
+  window.location.href = data.url;
+}
 
   return (
     <>
@@ -313,9 +301,7 @@ export default function CheckoutPage() {
                 disabled={!hasItems}
                 style={{ marginTop: "0.75rem" }}
               >
-                <span>
-                  Place order (demo)
-                </span>
+                Pay securely with Stripe
               </button>
               {!hasItems && (
                 <p

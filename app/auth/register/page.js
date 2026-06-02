@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { registerUser } from "../../../lib/authClient";
-import { useAuth } from "../../../hooks/useAuth";
+import { useAuth } from "../../../hooks/UseAuth";
 
 export default function RegisterPage() {
   const router = useRouter();
