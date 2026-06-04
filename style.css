@@ -85,3 +85,35 @@ footer {
   padding: 48px;
   font-size: 14px;
 }
+
+.account-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border-radius: 999px;
+  padding: 0.35rem 0.65rem;
+  text-decoration: none;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(122, 95, 70, 0.25);
+  font-size: 0.85rem;
+}
+
+.account-icon {
+  width: 1.45rem;
+  height: 1.45rem;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: #fff0dc;
+}
+
+.account-name {
+  font-weight: 600;
+}
+
+@media (max-width: 720px) {
+  .account-name {
+    display: none;
+  }
+}

@@ -16,8 +16,8 @@ export default function RegisterPage() {
     setError(null);
 
     const formData = new FormData(e.currentTarget);
-    const name = String(formData.get("name") || "");
-    const email = String(formData.get("email") || "");
+    const name = String(formData.get("name") || "").trim();
+    const email = String(formData.get("email") || "").trim();
     const password = String(formData.get("password") || "");
 
     if (!name || !email || !password) {
@@ -29,7 +29,7 @@ export default function RegisterPage() {
       setLoading(true);
       const { token, user } = await registerUser(name, email, password);
       saveAuth(token, user);
-      router.push("/shop"); // or "/"
+      router.push("/shop");
     } catch (err) {
       setError(err.message || "Registration failed");
     } finally {

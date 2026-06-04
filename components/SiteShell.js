@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { CartProvider, useCart } from "./CartContext";
+import { useAuth } from "../hooks/UseAuth"; 
 
 export default function SiteShell({ children }) {
   return (
@@ -17,6 +18,7 @@ function ChromeInner({ children }) {
   const pathname = usePathname();
   const [navOpen, setNavOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
+  const { user, logout } = useAuth();
 
   const {
     cart,
@@ -152,7 +154,22 @@ function ChromeInner({ children }) {
                 )}
               </button>
               
-              <Link href="/auth/login" className="btn-ghost"><span>Sign In</span></Link>
+              {mounted && user ? (
+                <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                  <Link href="/account" className="account-toggle" aria-label="My account">
+                    <span className="account-icon">👤</span>
+                    <span className="account-name">{user.name?.split(" ")[0] || "Account"}</span>
+                  </Link>
+
+                  <button type="button" className="btn-ghost" onClick={logout}>
+                    Logout
+                  </button>
+                </div>
+              ) : (
+                <Link href="/auth/login" className="btn-ghost">
+                  Sign In
+                </Link>
+              )}
               <Link href="/shop" className="btn">
                 Shop Now
               </Link>

@@ -93,6 +93,12 @@ export default function ShopPage() {
     clearCart
   } = useCart();
 
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   // Load products from Node backend
   useEffect(() => {
     let cancelled = false;
@@ -208,7 +214,7 @@ export default function ShopPage() {
             <h2 style={{ marginBottom: "0.5rem", fontSize: "1.1rem" }}>
               Your cart
             </h2>
-            {cartCount === 0 ? (
+            {!mounted ||cartCount === 0 ? (
               <p style={{ fontSize: "0.9rem", color: "var(--muted)" }}>
                 Your cart is empty. Add a bag or two to get started.
               </p>
