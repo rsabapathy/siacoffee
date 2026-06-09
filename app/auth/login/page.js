@@ -7,35 +7,37 @@ import { useAuth } from "../../../hooks/UseAuth";
 
 export default function LoginPage() {
   const router = useRouter();
-  const { saveAuth } = useAuth();
+  const { saveAuth, refreshUser } = useAuth();
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
   async function handleSubmit(e) {
-    e.preventDefault();
-    setError(null);
+  e.preventDefault();
+  setError(null);
 
-    const formData = new FormData(e.currentTarget);
-    const email = String(formData.get("email") || "");
-    const password = String(formData.get("password") || "");
+  const formData = new FormData(e.currentTarget);
+  const email = String(formData.get("email") || "");
+  const password = String(formData.get("password") || "");
 
-    if (!email || !password) {
-      setError("Please enter email and password.");
-      return;
-    }
+  if (!email || !password) {
+    setError("Please enter email and password.");
+    return;
+  }
 
-    try {
-      setLoading(true);
-      const { token, user } = await loginUser(email, password);
-      saveAuth(token, user);
-      router.push("/shop"); // or "/"
+  try {
+    setLoading(true);
+
+      const data = await loginUser(email, password);
+      saveAuth(null, data.user);
+
+      window.location.assign("/account");
     } catch (err) {
+      console.error("Login error:", err);
       setError(err.message || "Login failed");
     } finally {
       setLoading(false);
     }
   }
-
   return (
     <>
       {/* same hero layout */}
@@ -89,14 +91,8 @@ export default function LoginPage() {
               />
             </div>
 
-            <button
-              className="btn"
-              type="submit"
-              disabled={loading}
-              style={{ marginTop: "0.75rem" }}
-            >
-                <span>{loading ? "Signing in..." : "Sign in"}</span>
-              
+            <button className="btn" type="submit" disabled={loading}>
+              <span>{loading ? "Signing in..." : "Sign in"}</span>
             </button>
 
             <p

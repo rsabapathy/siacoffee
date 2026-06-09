@@ -8,7 +8,7 @@ import { updateProfile, getMyOrders } from "../../lib/authClient";
 
 export default function AccountPage() {
   const router = useRouter();
-  const { user, token, mounted, saveAuth, logout } = useAuth();
+  const { user, mounted, loading, saveAuth, logout } = useAuth();
 
   const [orders, setOrders] = useState([]);
   const [ordersLoading, setOrdersLoading] = useState(true);
@@ -16,31 +16,31 @@ export default function AccountPage() {
   const [ordersError, setOrdersError] = useState("");
 
   useEffect(() => {
+  if (!mounted || loading) return;
 
-    if (!mounted) 
-      {
-        return;
-      } 
+  if (!user) {
+    router.push("/auth/login");
+    return;
+  }
 
-    if (!user || !token) {
-      router.push("/auth/login");
-      return;
+  async function loadOrders() {
+    try {
+      setOrdersLoading(true);
+      setOrdersError("");
+
+      const data = await getMyOrders();
+
+      setOrders(data || []);
+    } catch (err) {
+      console.error("Orders load error:", err);
+      setOrdersError(err.message || "Failed to load orders");
+    } finally {
+      setOrdersLoading(false);
     }
+  }
 
-    async function loadOrders() {
-      try {
-        setOrdersLoading(true);
-        const data = await getMyOrders(token);
-        setOrders(data || []);
-      } catch (err) {
-        setOrdersError(err.message || "Failed to load orders");
-      } finally {
-        setOrdersLoading(false);
-      }
-    }
-
-    loadOrders();
-  }, [mounted, user, token, router]);
+  loadOrders();
+}, [mounted, loading, user, router]);
 
   async function handleProfileSubmit(e) {
     e.preventDefault();
@@ -56,8 +56,8 @@ export default function AccountPage() {
     }
 
     try {
-      const updatedUser = await updateProfile(token, name, email);
-      saveAuth(token, updatedUser);
+      const updatedUser = await updateProfile(name, email);
+      saveAuth(updatedUser);
       setProfileStatus("Profile updated successfully.");
     } catch (err) {
       setProfileStatus(err.message || "Could not update profile.");

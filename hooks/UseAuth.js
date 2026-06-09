@@ -2,53 +2,69 @@
 
 import { useEffect, useState } from "react";
 
+const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "http://localhost:4000";
+
 export function useAuth() {
   const [user, setUser] = useState(null);
-  const [token, setToken] = useState(null);
   const [mounted, setMounted] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  async function refreshUser() {
+  try {
+    const res = await fetch(`${API_BASE}/api/auth/me`, {
+      credentials: "include",
+    });
+
+    if (res.status === 401) {
+      setUser(null);
+      return null;
+    }
+
+    if (!res.ok) {
+      setUser(null);
+      return null;
+    }
+
+    const data = await res.json();
+    setUser(data);
+    return data;
+  } catch (err) {
+    console.error("Auth refresh failed:", err);
+    setUser(null);
+    return null;
+  } finally {
+    setLoading(false);
+  }
+}
 
   useEffect(() => {
     setMounted(true);
-
-    try {
-      const stored = window.localStorage.getItem("aurora_auth");
-
-      if (stored) {
-        const parsed = JSON.parse(stored);
-        setUser(parsed.user || null);
-        setToken(parsed.token || null);
-      }
-    } catch (err) {
-      console.error("Failed to load auth:", err);
-    }
+    refreshUser();
   }, []);
 
-  function saveAuth(tokenValue, userValue) {
-    window.localStorage.setItem(
-      "aurora_auth",
-      JSON.stringify({
-        token: tokenValue,
-        user: userValue,
-      })
-    );
-
-    setToken(tokenValue);
+  function saveAuth(_tokenValue, userValue) {
     setUser(userValue);
+    setLoading(false);
     setMounted(true);
   }
 
-  function logout() {
-    window.localStorage.removeItem("aurora_auth");
-    setToken(null);
+  async function logout() {
+    await fetch(`${API_BASE}/api/auth/logout`, {
+      method: "POST",
+      credentials: "include",
+    });
+
     setUser(null);
+    setLoading(false);
     setMounted(true);
   }
 
   return {
     user,
-    token,
     mounted,
+    loading,
     saveAuth,
     logout,
+    refreshUser,
   };
 }

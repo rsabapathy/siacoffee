@@ -27,9 +27,9 @@ export default function RegisterPage() {
 
     try {
       setLoading(true);
-      const { token, user } = await registerUser(name, email, password);
-      saveAuth(token, user);
-      router.push("/shop");
+      const { user } = await registerUser(name, email, password);
+      saveAuth(null, user);
+      router.push("/account");
     } catch (err) {
       setError(err.message || "Registration failed");
     } finally {
