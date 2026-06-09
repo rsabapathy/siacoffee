@@ -18,20 +18,16 @@ export default function AboutPage() {
             <div className="card">
               <h2 style={{ marginBottom: "0.75rem" }}>Why Sia Coffee?</h2>
               <p>
-                Sia Coffee started as a late-night idea between friends who were tired of flat,
-                burnt coffee that tasted the same wherever you went. We wanted cups that felt
-                like the first light of day: bright, layered and a little bit special.
+                Sia Coffee started with one simple thing: a genuine love for coffee.
               </p>
               <p>
-                Today we roast in tiny batches in our London roastery, working with import
-                partners and smallholder farmers who care about quality as much as we do.
-                Every roast profile is dialled in by hand; every bag is packed within hours
-                of cooling.
+                What began as a personal passion quickly grew into something more. Starting small, we spent countless hours learning, experimenting, and refining our craft—driven by the belief that great coffee should be accessible, authentic, and full of character.
               </p>
               <p>
-                Our name comes from the Sia Coffee – those rare streaks of colour in the sky that
-                make you pause for a second. We hope our coffee does the same for your
-                mornings.
+                Today, that same spirit lives in every batch we produce. Our beans are hand roasted in small batches with care and precision, allowing us to bring out the unique flavors in every origin we work with. It's a process rooted in patience, attention to detail, and a deep respect for the craft.
+              </p>
+              <p>                
+                We're not a big factory—and we don't want to be. We're a small, passionate operation dedicated to quality over quantity, and to sharing great coffee with people who appreciate it as much as we do.
               </p>
             </div>
 
