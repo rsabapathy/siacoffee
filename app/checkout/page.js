@@ -48,7 +48,7 @@ export default function CheckoutPage() {
     })),
   };
 
-  const res = await fetch(`${API_BASE}/api/stripe/create-checkout-session`, {
+  const res = await fetch(`${API_BASE}api/stripe/create-checkout-session`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
