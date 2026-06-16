@@ -82,6 +82,12 @@ export default function ShopPage() {
   const [products, setProducts] = useState([]);
   const [loadingProducts, setLoadingProducts] = useState(true);
 
+  const absoluteUrl = (url) => {
+    if (!url) return undefined;
+    if (url.startsWith("http://") || url.startsWith("https://")) return url;
+    return `${API_BASE}${url.startsWith("/") ? url : `/${url}`}`;
+  };
+
   const {
     cart,
     cartCount,
@@ -179,7 +185,7 @@ export default function ShopPage() {
                   id={product.slug}
                 >
                   <div className="product-image">
-                    <img src={product.image} alt={product.name} />
+                    <img src={absoluteUrl(product.image)} alt={product.name} />
                   </div>
                   <div className="product-label">{product.label}</div>
                   <h3 className="product-name">{product.name}</h3>
