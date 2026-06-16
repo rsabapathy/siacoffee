@@ -213,7 +213,7 @@ export default function ShopPage() {
                   id={product.slug}
                 >
                   <div className="product-image">
-                    <img src={product.image} alt={product.name} />
+                    <img src={absoluteUrl(product.image)} alt={product.name} />
                   </div>
                   <div className="product-label">{product.label}</div>
                   <h3 className="product-name">{product.name}</h3>
@@ -231,7 +231,7 @@ export default function ShopPage() {
                           name: product.name,
                           price: product.price,
                           size: product.size,
-                          image: product.image
+                          image: absoluteUrl(product.image)
                         })
                       }
                     >
