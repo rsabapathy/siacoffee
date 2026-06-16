@@ -203,7 +203,7 @@ export default function ShopPage() {
                           name: product.name,
                           price: product.price,
                           size: product.size,
-                          image: absoluteUrl(product.image)
+                          image: product.image ? [absoluteUrl(product.image)] : [],
                         })
                       }
                     >
