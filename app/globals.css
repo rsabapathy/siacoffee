@@ -1288,3 +1288,232 @@ footer {
 .pt-50 {
   padding-top: 50px;
 }
+/* SIA Coffee reference design adaptation */
+:root{--bg:#f3eadc;--bg-alt:#e5d2bb;--dark:#160b07;--accent:#8a4a24;--accent-soft:#e8d0ad;--text:#21150e;--muted:#78695d;--line:#d8c8b5}
+body{background:#f3eadc;color:#21150e}
+.sia-container{width:min(1160px,calc(100% - 40px));margin-inline:auto}
+.sia-main{min-height:60vh}
+.sia-site-header{background:#080808ee;color:#fff;border-bottom:1px solid #292929;position:sticky;top:0;z-index:30}
+.sia-site-nav{height:80px;display:flex;align-items:center;justify-content:space-between;gap:22px}
+.sia-site-brand img{height:62px;width:190px;object-fit:contain;object-position:left center}
+.sia-desktop-links,.sia-site-actions{display:flex;align-items:center;gap:26px}
+.sia-desktop-links a,.sia-account-link,.sia-cart-button{color:#f3eadc;font-size:14px;background:transparent;border:0;cursor:pointer}
+.sia-desktop-links a:hover,.sia-account-link:hover{color:#d9a760}
+.sia-site-actions{gap:17px}
+.sia-cart-button{border:1px solid #806044;padding:9px 15px;border-radius:999px}
+.sia-menu-toggle{display:none;appearance:none;background:transparent;border:1px solid #806044;border-radius:10px;width:46px;height:44px;align-items:center;justify-content:center;flex-direction:column;gap:5px;cursor:pointer}
+.sia-menu-toggle span{width:21px;height:2px;background:#e8d0ad;display:block;border-radius:2px;transition:transform .2s,opacity .2s}
+.sia-menu-toggle[aria-expanded=true] span:first-child{transform:translateY(7px) rotate(45deg)}
+.sia-menu-toggle[aria-expanded=true] span:nth-child(2){opacity:0}
+.sia-menu-toggle[aria-expanded=true] span:last-child{transform:translateY(-7px) rotate(-45deg)}
+.sia-mobile-navigation[hidden]{display:none!important}
+.sia-mobile-navigation{background:#180b06;border-top:1px solid #4b2b1a;padding:12px max(20px,calc((100vw - 1160px)/2)) 20px;display:flex;flex-direction:column}
+.sia-mobile-navigation a{color:#f3eadc;padding:13px 4px;border-bottom:1px solid #3b2317;font-size:15px}
+.sia-home{overflow:hidden}
+.sia-home h1,.sia-home h2,.sia-home h3{font-family:Georgia,serif;letter-spacing:-.035em;margin:0}
+.sia-home h1{font-size:clamp(54px,7vw,100px);line-height:.98}
+.sia-home h2{font-size:clamp(40px,5vw,68px);line-height:1.05}
+.sia-home h3{font-size:27px;line-height:1.2}
+.sia-home p{line-height:1.75}
+.sia-eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:800;color:#92989e;margin-bottom:18px}
+.sia-hero{background:radial-gradient(circle at 75% 45%,#633218,#2c160d 36%,#090504 72%);color:white}
+.sia-hero-grid{min-height:670px;display:grid;grid-template-columns:1.1fr .9fr;gap:35px;align-items:center;padding-block:60px}
+.sia-lead{font-size:19px;color:#c7c0bd;margin:28px 0;max-width:620px}
+.sia-hero-image{width:100%;height:560px;object-fit:cover;border-radius:30px;border:1px solid #75401f;box-shadow:0 30px 70px #0008}
+.sia-actions{display:flex;gap:12px;flex-wrap:wrap}
+.sia-button{display:inline-flex;align-items:center;justify-content:center;border:1px solid #777;border-radius:999px;padding:12px 21px;font-size:14px;font-weight:700;text-decoration:none}
+.sia-button-light{background:#fff;color:#090909;border-color:#fff}
+.sia-button-outline{color:#fff;background:transparent}
+.sia-button-dark{background:#160b07;color:#fff;border-color:#160b07}
+.sia-facts{background:#241108;color:#fff}
+.sia-fact-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+.sia-fact-grid>div{padding:25px;border-right:1px solid #4a2c1d}
+.sia-fact-grid b{display:block;font:22px Georgia,serif}.sia-fact-grid span{font-size:13px;color:#aaa}
+.sia-section{padding-block:95px}
+.sia-intro{max-width:760px;font-size:19px;color:#60554e;margin-top:23px}
+.sia-coffee-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:44px}
+.sia-coffee-card{background:#fff;border:1px solid #d8c8b5;border-radius:23px;padding:25px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.sia-coffee-card img{width:100%;height:245px;object-fit:cover;background:#2b150b;border-radius:16px}
+.sia-coffee-card h3{font-size:clamp(21px,2vw,27px)}
+.sia-coffee-card p{font-size:14px;color:#66584e}
+.sia-tag{font-size:11px;text-transform:uppercase;letter-spacing:.13em;font-weight:800;color:#8a4a24}
+.sia-card-link{display:inline-flex;margin-top:auto;color:#633318;font-weight:750;font-size:14px;text-decoration:underline;text-underline-offset:4px}
+.sia-banner{background:#2a130a}.sia-banner img{width:100%;max-height:720px;object-fit:cover}
+.sia-story{background:#160b07;color:#fff}.sia-story-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:65px;align-items:start}
+.sia-story-grid>img{width:100%;height:520px;object-fit:cover;border-radius:28px;position:sticky;top:110px}
+.sia-story h3{margin-top:32px}.sia-story p{color:#bcbcbc;margin-top:14px}.sia-story .sia-button{margin-top:25px}
+.sia-process{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:42px}.sia-process article{border-top:1px solid #b9a99b;padding-top:18px}.sia-process span{font-size:12px;color:#8a4a24;font-weight:800}.sia-process h3{margin-top:15px}.sia-process p{color:#60554e;margin-top:12px}
+.sia-wholesale{background:#e5d2bb}.sia-wholesale-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:45px;align-items:center}.sia-wholesale-grid>div>p{margin:25px 0;color:#5f5146}.sia-wholesale-panel{background:#101010;color:white;border-radius:24px;padding:35px}.sia-wholesale-panel p{color:#bbb!important}
+.sia-contact{text-align:center;background:#2a130a;color:#fff}.sia-contact p{color:#aaa;max-width:650px;margin:20px auto 28px}
+/* Retain shopping logic while hiding Add to Cart actions as requested 
+.add-to-cart{display:none!important}*/
+@media(max-width:800px){.sia-desktop-links{display:none}.sia-menu-toggle{display:flex}.sia-site-nav{height:78px}.sia-site-brand img{width:155px;height:56px}.sia-hero-grid,.sia-story-grid,.sia-wholesale-grid{grid-template-columns:1fr}.sia-hero-grid{min-height:auto}.sia-hero-image{height:420px}.sia-coffee-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.sia-story-grid>img{position:relative;top:0}.sia-fact-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:550px){.sia-container{width:calc(100% - 24px)}.sia-section{padding-block:68px}.sia-home h1{font-size:52px}.sia-hero-image{height:360px}.sia-coffee-grid,.sia-process,.sia-fact-grid{grid-template-columns:1fr}.sia-site-actions{gap:8px}.sia-account-link{font-size:12px}.sia-cart-button{padding:8px}.sia-fact-grid>div{border-bottom:1px solid #4a2c1d}.sia-story-grid{gap:30px}}
+
+
+/* Shared SIA editorial design — shop, about and contact */
+.sia-interior{background:#f3eadc;color:#21150e;min-height:70vh}
+.sia-interior .sia-inner-hero{background:radial-gradient(circle at 80% 30%,#613019 0%,#2c160d 43%,#100806 85%);color:#fff;padding:100px 0 105px;position:relative;overflow:hidden}
+.sia-interior .sia-inner-hero:after{content:"";position:absolute;right:-95px;bottom:-195px;width:440px;height:440px;border:1px solid #a7794d55;border-radius:50%;box-shadow:0 0 0 65px #a7794d12,0 0 0 130px #a7794d0c;pointer-events:none}
+.sia-interior .sia-inner-hero .sia-container{position:relative;z-index:1}
+.sia-interior .sia-inner-hero .sia-eyebrow{color:#d5a16b;display:block}
+.sia-interior .page-hero-title{font:normal clamp(56px,7vw,94px)/1.02 Georgia,serif;letter-spacing:-.045em;margin:0;max-width:850px;color:#fff}
+.sia-gold-dot{color:#c7944f}
+.sia-interior .page-hero-subtitle{font-size:clamp(16px,1.8vw,20px);line-height:1.7;color:#d1c4b9;max-width:690px;margin:25px 0 0}
+.sia-interior .sia-inner-section{padding:82px 0 100px}
+.sia-interior h2,.sia-interior h3{font-family:Georgia,serif;letter-spacing:-.035em;color:inherit}
+.sia-interior h2{font-size:clamp(29px,3vw,43px);line-height:1.12}
+.sia-interior p{line-height:1.75}
+.sia-interior .card,.sia-interior .product-card{background:#fffdf9;border:1px solid #d8c8b5;border-radius:23px;box-shadow:0 12px 40px #3b1b0d0a}
+.sia-interior .card{padding:30px}
+.sia-interior .btn,.sia-interior .btn-light{background:#633318;color:#fff;border:1px solid #633318;border-radius:999px;padding:12px 22px;font-weight:750;display:inline-flex;justify-content:center;align-items:center;text-decoration:none}
+.sia-interior .btn:hover,.sia-interior .btn-light:hover{background:#8a4a24;color:#fff}
+.sia-shop-layout{display:grid;grid-template-columns:minmax(0,2.3fr) minmax(255px,1fr);gap:28px;align-items:start}
+.sia-shop .shop-controls{background:#fffaf3;border:1px solid #d8c8b5;border-radius:18px;padding:18px;margin-bottom:28px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between}
+.sia-shop .chip{border:1px solid #d1baa3;background:transparent;color:#633318;border-radius:999px}
+.sia-shop .chip.active,.sia-shop .chip:hover{background:#633318;color:white;border-color:#633318}
+.sia-shop .products-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.sia-shop .product-card{padding:18px;display:flex;flex-direction:column;min-width:0;overflow:hidden}
+.sia-shop .product-image{background:#2b150b;border-radius:16px;overflow:hidden;min-height:200px}
+.sia-shop .product-image img{width:100%;height:240px;object-fit:cover}
+.sia-shop .product-label{color:#8a4a24;letter-spacing:.12em;text-transform:uppercase;font-size:11px;font-weight:800;margin-top:16px}
+.sia-shop .product-name{font-size:clamp(22px,2vw,29px);margin-top:8px}
+.sia-shop .product-notes{color:#6d6055;flex:1}
+.sia-shop .product-footer{border-top:1px solid #e9ddd1;padding-top:16px;margin-top:16px}
+.sia-shop .price{font-family:Georgia,serif;font-size:24px;color:#633318}
+.sia-shop .price small{font:13px system-ui,sans-serif;color:#78695d}
+.sia-shop .sia-cart-panel{position:sticky;top:105px;background:#ead7c2}
+.sia-shop .sia-cart-panel h2{font-size:28px!important}
+.sia-shop-status{padding:22px;background:#fffdf9;border-radius:16px}
+/* .sia-shop .add-to-cart{display:none!important} */
+.sia-add-to-cart {
+  width: 100%;
+  padding: 13px 20px;
+  margin-top: 18px;
+  background: #633318;
+  color: #fff;
+  border: 1px solid #633318;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.sia-add-to-cart:hover {
+  background: #8a4a24;
+  transform: translateY(-2px);
+}
+
+.sia-add-to-cart:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.sia-about .about-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:32px;align-items:start}
+.sia-about .about-grid .card{margin-bottom:20px}
+.sia-about .story-list{padding-left:22px;line-height:1.9}
+.sia-about .about-grid img{object-fit:cover;max-height:470px}
+.sia-about-wholesale{background:#e5d2bb}
+.sia-about .subscription{background:#160b07;border-radius:28px;padding:50px;color:white}
+.sia-about .subscription h3{font-size:clamp(28px,3vw,44px);color:white}
+.sia-about .subscription p{color:#d0c1b6;max-width:720px}
+.sia-about .subscription-highlight{color:#d5a16b;text-transform:uppercase;letter-spacing:.16em;font-size:12px;font-weight:800}
+.sia-contact-page .contact-layout{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:30px;align-items:start}
+.sia-contact-page .card h2{margin-bottom:18px}
+.sia-contact-page .form{display:grid;gap:16px}
+.sia-contact-page .form-group{display:grid;gap:7px}
+.sia-contact-page .form-group label{font-weight:700;color:#4a2919}
+.sia-contact-page .form-control,.sia-contact-page .form-textarea{width:100%;background:#fffaf5;border:1px solid #d7c6b5;border-radius:12px;padding:13px 15px;color:#21150e;font:inherit}
+.sia-contact-page .form-textarea{min-height:170px;resize:vertical}
+.sia-contact-page .form-control:focus,.sia-contact-page .form-textarea:focus{outline:2px solid #c7944f;outline-offset:1px}
+.sia-contact-page .contact-layout img{max-height:380px;object-fit:cover}
+@media(max-width:950px){.sia-shop-layout{grid-template-columns:1fr}.sia-shop .sia-cart-panel{position:static}.sia-about .about-grid,.sia-contact-page .contact-layout{grid-template-columns:1fr}}
+@media(max-width:620px){.sia-interior .sia-inner-hero{padding:70px 0 75px}.sia-interior .sia-inner-section{padding:50px 0 70px}.sia-shop .products-grid{grid-template-columns:1fr}.sia-interior .card{padding:22px}.sia-about .subscription{padding:26px}.sia-interior .page-hero-title{font-size:54px}}
+
+/* SIA Coffee interior pages: account and checkout */
+.sia-interior-hero{background:linear-gradient(115deg,#23130e 0%,#482819 62%,#6c422a 100%);color:#f7eee1;padding:clamp(3.6rem,7vw,6.5rem) 1.5rem;position:relative;overflow:hidden}
+.sia-interior-hero:after{content:"";position:absolute;width:430px;height:430px;right:-140px;top:-180px;border:1px solid rgba(241,215,183,.19);border-radius:50%;box-shadow:0 0 0 65px rgba(241,215,183,.035),0 0 0 135px rgba(241,215,183,.025);pointer-events:none}
+.sia-interior-hero-inner{max-width:1120px;margin:auto;position:relative;z-index:1}
+.sia-eyebrow{display:block;font-size:.73rem;font-weight:750;letter-spacing:.2em;text-transform:uppercase;color:#b78b61;margin-bottom:1rem}
+.sia-interior-hero .sia-eyebrow{color:#d8b68e}
+.sia-interior-title{font-family:Georgia,'Times New Roman',serif;font-size:clamp(3.1rem,6vw,5.4rem);font-weight:400;letter-spacing:-.05em;line-height:1.05;margin-bottom:1.2rem;color:#fff6e9}
+.sia-interior-subtitle{max-width:600px;font-size:1.04rem;line-height:1.8;color:#e4d3c3}
+.sia-interior-section{max-width:1180px;margin:0 auto;padding:clamp(2.5rem,5vw,5rem) 1.25rem}
+.sia-account-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.4fr)!important;gap:2rem!important}
+.sia-checkout-grid{grid-template-columns:minmax(0,1.55fr) minmax(0,1fr)!important;gap:2rem!important}
+.sia-interior-card{background:#fffaf3!important;border:1px solid #e7d8c6!important;border-radius:20px!important;box-shadow:0 18px 44px rgba(54,29,14,.065)!important;padding:clamp(1.5rem,3vw,2.5rem)!important}
+.sia-card-heading{font-family:Georgia,'Times New Roman',serif;font-size:clamp(1.7rem,2.6vw,2.3rem);font-weight:400;line-height:1.2;color:#321c13;margin-bottom:1.6rem}
+.sia-interior-card label{color:#4b3022;font-weight:650;font-size:.85rem}
+.sia-interior-card .form-control,.sia-interior-card .form-textarea{background:#fff;border:1px solid #decab6;border-radius:10px;padding:13px 15px;min-height:48px}
+.sia-interior-card .form-control:focus,.sia-interior-card .form-textarea:focus{outline:2px solid #b78357;outline-offset:1px}
+.sia-primary-action{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 26px;background:#57301f;color:#fff9f1;border:1px solid #57301f;border-radius:999px;font-size:.92rem;font-weight:700;cursor:pointer;text-decoration:none;transition:background .2s}
+.sia-primary-action:hover{background:#774329;color:white}
+.sia-primary-action:disabled{opacity:.5;cursor:not-allowed}
+.sia-secondary-action{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 22px;background:transparent;border:1px solid #b99b81;border-radius:999px;color:#57301f;cursor:pointer}
+.sia-order-entry{background:#fff!important;border:1px solid #e7d8c6!important;border-radius:14px!important;padding:1.15rem!important}
+.sia-stripe-note{padding:1.2rem 1.35rem;border-radius:14px;background:#f2e7d9;border:1px solid #e3ceb6;margin:1.5rem 0}
+.sia-stripe-note .sia-eyebrow{margin-bottom:.4rem}
+.sia-stripe-note p{font-size:.9rem;color:#573a29;line-height:1.6}
+.sia-checkout-submit{width:100%}
+.sia-checkout-error{color:#a12b22;margin-top:.7rem;font-size:.9rem}
+.product-card .add-to-cart,.add-to-cart{display:inline-flex!important;visibility:visible!important;opacity:1!important;align-items:center;justify-content:center;background:#57301f!important;color:#fff!important;border:1px solid #57301f!important;border-radius:999px;padding:10px 18px;cursor:pointer}
+.product-card .add-to-cart:hover{background:#774329!important}
+@media(max-width:800px){.sia-account-grid,.sia-checkout-grid{grid-template-columns:minmax(0,1fr)!important}.sia-interior-hero{padding:3.5rem 1.25rem}.sia-interior-card{padding:1.5rem!important}}
+
+/* Checkout confirmation */
+.sia-success-layout{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(260px,1fr);gap:2rem;align-items:stretch}
+.sia-success-copy{line-height:1.85;color:#5f4b3d;max-width:58ch}
+.sia-success-actions{display:flex;gap:.85rem;flex-wrap:wrap;margin-top:2rem}
+.sia-success-aside{background:#eee0cf;border-radius:20px;padding:clamp(2rem,4vw,3rem);display:flex;flex-direction:column;justify-content:center}
+.sia-success-aside h2{font-family:Georgia,'Times New Roman',serif;font-size:clamp(2rem,3vw,3rem);font-weight:400;line-height:1.15;color:#3c2317;margin:0 0 1rem}
+.sia-success-aside p{color:#644b3a;line-height:1.8}
+@media(max-width:800px){.sia-success-layout{grid-template-columns:minmax(0,1fr)}}
+
+/* SIA Coffee legal pages */
+.sia-legal-page .sia-inner-hero{background:linear-gradient(115deg,#25150f,#50301f);color:#fff5e9}
+.sia-legal-layout{display:grid;grid-template-columns:240px minmax(0,1fr);gap:clamp(2rem,6vw,6rem);align-items:start;max-width:1100px}
+.sia-legal-aside{position:sticky;top:110px;border-top:2px solid #a97b52;padding-top:1.5rem;font-size:.9rem;line-height:1.8;color:#725843}
+.sia-legal-aside a,.sia-legal-content a{color:#86532f;text-decoration:underline;text-underline-offset:3px}
+.sia-legal-content{background:#fffaf3;border:1px solid #e7d8c6;border-radius:20px;padding:clamp(1.5rem,4vw,3.5rem);color:#4a3528;line-height:1.85;box-shadow:0 16px 42px rgba(54,29,14,.055)}
+.sia-legal-content>p:first-child{font-size:1.08rem;color:#533522}
+.sia-legal-content h2{font-family:Georgia,'Times New Roman',serif;font-size:clamp(1.35rem,2vw,1.8rem);font-weight:400;color:#321d14;margin:2.2rem 0 .7rem}
+.sia-legal-content h2:first-child{margin-top:0}
+.sia-legal-content p{margin:0 0 1.05rem}
+.sia-legal-content ul{padding-left:1.4rem;margin-bottom:1rem}
+.sia-legal-content li{margin-bottom:.65rem}
+@media(max-width:760px){.sia-legal-layout{grid-template-columns:1fr;gap:1.5rem}.sia-legal-aside{position:static}.sia-legal-content{padding:1.5rem}}
+
+/* Legal page hero: same proportions as Our Story, responsive long heading */
+.sia-interior.sia-legal-page .sia-inner-hero{background:radial-gradient(circle at 80% 30%,#613019 0%,#2c160d 43%,#100806 85%);padding:100px 0 105px}
+.sia-interior.sia-legal-page .page-hero-title{font-size:clamp(2.5rem,6.4vw,5.8rem);line-height:1.08;letter-spacing:-.045em;overflow-wrap:normal;max-width:100%}
+.sia-interior.sia-legal-page .page-hero-subtitle{max-width:650px;line-height:1.7;margin-top:1.2rem}
+@media(max-width:620px){.sia-interior.sia-legal-page .sia-inner-hero{padding:70px 0 75px}.sia-interior.sia-legal-page .page-hero-title{font-size:clamp(2.25rem,9vw,3.4rem);line-height:1.12;letter-spacing:-.04em}}
+
+
+/* SIA Coffee sign-in and registration */
+.sia-auth-page{background:#f6f0e8;min-height:70vh}
+.sia-auth-section{max-width:1160px;margin:0 auto;padding:clamp(2.5rem,5vw,5rem) 1.25rem}
+.sia-auth-layout{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:1.5rem;align-items:stretch}
+.sia-auth-card{background:#fffaf3;border:1px solid #e7d8c6;border-radius:22px;padding:clamp(1.5rem,4vw,3.2rem);box-shadow:0 16px 44px rgba(55,29,13,.06)}
+.sia-auth-card .sia-card-heading{margin-bottom:.55rem}
+.sia-auth-intro{color:#806753;margin-bottom:2rem;line-height:1.7}
+.sia-auth-form{display:grid;gap:1.1rem}
+.sia-auth-card .form-group{display:flex;flex-direction:column;gap:.5rem}
+.sia-auth-card label{color:#493020;font-weight:650;font-size:.88rem}
+.sia-auth-card .form-control{width:100%;min-height:50px;background:white;border:1px solid #dbc6b1;border-radius:11px;padding:12px 15px;color:#352014}
+.sia-auth-card .form-control:focus{outline:2px solid #a97952;outline-offset:1px}
+.sia-auth-submit{width:100%;margin-top:.6rem;min-height:52px}
+.sia-auth-error{background:#fff0ec;color:#972b20;border:1px solid #edb7ad;border-radius:10px;padding:12px 14px;margin-bottom:1rem}
+.sia-auth-switch{margin-top:1.6rem;font-size:.91rem;color:#715746}
+.sia-auth-switch a{font-weight:700;color:#62331c;text-decoration:underline;text-underline-offset:3px}
+.sia-auth-aside{display:flex;flex-direction:column;justify-content:center;background:linear-gradient(145deg,#382017,#64402b);border-radius:22px;padding:clamp(2rem,4vw,3.4rem);color:#f8eee0;min-height:420px}
+.sia-auth-aside .sia-eyebrow{color:#e1bb8e}
+.sia-auth-aside h2{font-family:Georgia,'Times New Roman',serif;font-size:clamp(2.5rem,4vw,4rem);font-weight:400;letter-spacing:-.045em;line-height:1.13;margin-bottom:1.3rem;color:#fff7e9}
+.sia-auth-aside p{color:#ead9c7;line-height:1.85;max-width:330px}
+.sia-auth-aside-rule{height:1px;background:rgba(255,246,232,.2);margin:2rem 0}
+.sia-auth-aside .sia-auth-aside-foot{font-size:.86rem;color:#d9bfa8}
+@media(max-width:760px){.sia-auth-layout{grid-template-columns:1fr}.sia-auth-aside{min-height:unset;padding:2rem}.sia-auth-aside h2{font-size:2.5rem}.sia-auth-section{padding:2rem 1rem}.sia-auth-card{padding:1.5rem}}
+.sia-shop-layout .card.sia-cart-panel,
+.sia-cart-button,
+.product-card .add-to-cart{display:none!important}

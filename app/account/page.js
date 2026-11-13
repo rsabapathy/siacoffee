@@ -72,15 +72,15 @@ export default function AccountPage() {
 
   return (
     <>
-      <section className="page-hero">
-        <h1 className="page-hero-title">My account</h1>
-        <p className="page-hero-subtitle">
-          Manage your profile, view your orders and keep your Aurora details up to date.
+      <section className="sia-interior-hero"><div className="sia-interior-hero-inner"><span className="sia-eyebrow">YOUR COFFEE CORNER</span>
+        <h1 className="sia-interior-title">My account</h1>
+        <p className="sia-interior-subtitle">
+          Manage your profile, view your orders and keep your SIA Coffee details up to date.
         </p>
-      </section>
+      </div></section>
 
-      <section className="section">
-        <div
+      <section className="section sia-interior-section">
+        <div className="sia-account-grid"
           style={{
             display: "grid",
             gridTemplateColumns: "minmax(0, 1fr) minmax(0, 1.4fr)",
@@ -88,9 +88,9 @@ export default function AccountPage() {
             alignItems: "flex-start",
           }}
         >
-          <div className="card">
-            <h2 style={{ marginBottom: "0.75rem", fontSize: "1.15rem" }}>
-              Profile
+          <div className="card sia-interior-card">
+            <span className="sia-eyebrow">PERSONAL DETAILS</span><h2 className="sia-card-heading">
+              Your profile
             </h2>
 
             <form className="form" onSubmit={handleProfileSubmit}>
@@ -118,7 +118,7 @@ export default function AccountPage() {
                 />
               </div>
 
-              <button className="btn" type="submit">
+              <button className="sia-primary-action" type="submit">
                 Save profile
               </button>
 
@@ -137,7 +137,7 @@ export default function AccountPage() {
 
             <button
               type="button"
-              className="btn-ghost"
+              className="sia-secondary-action"
               style={{ marginTop: "0.75rem" }}
               onClick={() => {
                 logout();
@@ -148,9 +148,9 @@ export default function AccountPage() {
             </button>
           </div>
 
-          <div className="card">
-            <h2 style={{ marginBottom: "0.75rem", fontSize: "1.15rem" }}>
-              My orders
+          <div className="card sia-interior-card">
+            <span className="sia-eyebrow">YOUR PURCHASES</span><h2 className="sia-card-heading">
+              Order history
             </h2>
 
             {ordersLoading ? (
@@ -166,7 +166,7 @@ export default function AccountPage() {
                 <p style={{ color: "var(--muted)", fontSize: "0.9rem" }}>
                   You do not have any orders yet.
                 </p>
-                <Link href="/shop" className="btn" style={{ marginTop: "0.75rem" }}>
+                <Link href="/shop" className="sia-primary-action" style={{ marginTop: "0.75rem" }}>
                   Shop coffee
                 </Link>
               </div>
@@ -183,6 +183,7 @@ export default function AccountPage() {
                 {orders.map((order) => (
                   <li
                     key={order._id}
+                    className="sia-order-entry"
                     style={{
                       border: "1px solid rgba(122,95,70,0.18)",
                       borderRadius: "1rem",

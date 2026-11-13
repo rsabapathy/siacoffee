@@ -6,15 +6,11 @@ import { useCart } from "../../components/CartContext";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "https://siacoffee.co.uk";
 
-const PAYMENT_METHODS = [
-  { id: "card", label: "Card", subtitle: "Visa, Mastercard, Amex" },
-  { id: "paypal", label: "PayPal", subtitle: "Pay with your PayPal account" },
-  { id: "applepay", label: "Apple Pay", subtitle: "Fast checkout on supported devices" }
-];
 
 export default function CheckoutPage() {
   const { cart, cartCount, cartTotal, clearCart } = useCart();
-  const [paymentMethod, setPaymentMethod] = useState("card");
+  const [submitting, setSubmitting] = useState(false);
+  const [checkoutError, setCheckoutError] = useState("");
   const { user, loading: authLoading } = useAuth();
 
   if (authLoading) {
@@ -48,6 +44,9 @@ export default function CheckoutPage() {
     })),
   };
 
+  setSubmitting(true);
+  setCheckoutError("");
+  try {
   const res = await fetch(`${API_BASE}/api/stripe/create-checkout-session`, {
     method: "POST",
     headers: {
@@ -59,25 +58,29 @@ export default function CheckoutPage() {
   const data = await res.json();
 
   if (!res.ok || !data.url) {
-    alert(data.message || "Could not start Stripe checkout.");
+    setCheckoutError(data.message || "Could not start Stripe checkout.");
     return;
   }
 
   window.location.href = data.url;
+  } catch (err) {
+    setCheckoutError(err.message || "Unable to connect to checkout.");
+  } finally {
+    setSubmitting(false);
+  }
 }
 
   return (
     <>
-      <section className="page-hero">
-        <h1 className="page-hero-title">Checkout</h1>
-        <p className="page-hero-subtitle">
-          Review your order, add your details and choose a payment method. This is a demo
-          checkout – no real payment is processed.
+      <section className="sia-interior-hero"><div className="sia-interior-hero-inner"><span className="sia-eyebrow">ALMOST THERE</span>
+        <h1 className="sia-interior-title">Checkout</h1>
+        <p className="sia-interior-subtitle">
+          Fresh coffee is just around the corner. Add your delivery details and continue to secure payment.
         </p>
-      </section>
+      </div></section>
 
-      <section className="section">
-        <div
+      <section className="section sia-interior-section">
+        <div className="sia-checkout-grid"
           style={{
             display: "grid",
             gridTemplateColumns: "minmax(0, 1.8fr) minmax(0, 1.2fr)",
@@ -86,9 +89,9 @@ export default function CheckoutPage() {
           }}
         >
           {/* Left: details + payment form */}
-          <div className="card">
-            <h2 style={{ marginBottom: "0.75rem", fontSize: "1.15rem" }}>
-              Delivery &amp; payment
+          <div className="card sia-interior-card">
+            <span className="sia-eyebrow">STEP 01 · DELIVERY</span><h2 className="sia-card-heading">
+              Delivery details
             </h2>
             <form className="form" onSubmit={handleSubmit}>
               {/* Delivery details */}
@@ -114,7 +117,7 @@ export default function CheckoutPage() {
                   className="form-control"
                   placeholder="you@example.com"
                   required
-                  defaultValue={user ? user.name : ""}
+                  defaultValue={user ? user.email : ""}
                 />
               </div>
 
@@ -164,145 +167,20 @@ export default function CheckoutPage() {
                 />
               </div>
 
-              {/* Payment method selector */}
-              <div className="form-group">
-                <label>Payment method</label>
-                <div className="payment-methods">
-                  {PAYMENT_METHODS.map((method) => (
-                    <button
-                      key={method.id}
-                      type="button"
-                      className={
-                        "payment-pill" +
-                        (paymentMethod === method.id ? " selected" : "")
-                      }
-                      onClick={() => setPaymentMethod(method.id)}
-                    >
-                      <span className="payment-pill-main">
-                        <span className="payment-pill-label">
-                          {method.label}
-                        </span>
-                        <span className="payment-pill-sub">
-                          {method.subtitle}
-                        </span>
-                      </span>
-                      <span className="payment-pill-radio">
-                        {paymentMethod === method.id ? "●" : "○"}
-                      </span>
-                    </button>
-                  ))}
-                </div>
+              <div className="sia-stripe-note">
+                <span className="sia-eyebrow">SECURE PAYMENT</span>
+                <p>You'll be redirected to Stripe to complete your payment securely. We don't collect card details on this page.</p>
               </div>
 
-              {/* Fake payment UIs */}
-              {paymentMethod === "card" && (
-                <div className="payment-card-box">
-                  <div className="payment-card-header">
-                    <span>Card details</span>
-                    <div className="payment-card-brands">
-                      <span>Visa</span>
-                      <span>Mastercard</span>
-                      <span>Amex</span>
-                    </div>
-                  </div>
-                  <div className="form-group" style={{ marginBottom: "0.75rem" }}>
-                    <label htmlFor="card-number">Card number</label>
-                    <input
-                      id="card-number"
-                      type="text"
-                      inputMode="numeric"
-                      className="form-control"
-                      placeholder="4242 4242 4242 4242"
-                    />
-                  </div>
-                  <div
-                    style={{
-                      display: "grid",
-                      gridTemplateColumns: "minmax(0, 1fr) minmax(0, 1fr)",
-                      gap: "0.75rem"
-                    }}
-                  >
-                    <div className="form-group" style={{ marginBottom: 0 }}>
-                      <label htmlFor="card-exp">Expiry</label>
-                      <input
-                        id="card-exp"
-                        type="text"
-                        className="form-control"
-                        placeholder="MM / YY"
-                      />
-                    </div>
-                    <div className="form-group" style={{ marginBottom: 0 }}>
-                      <label htmlFor="card-cvc">CVC</label>
-                      <input
-                        id="card-cvc"
-                        type="text"
-                        className="form-control"
-                        placeholder="CVC"
-                      />
-                    </div>
-                  </div>
-                  <p
-                    style={{
-                      fontSize: "0.75rem",
-                      color: "var(--muted)",
-                      marginTop: "0.5rem"
-                    }}
-                  >
-                    This is a visual-only card form. In production, you&apos;d replace this
-                    with a Stripe Element or Stripe Checkout.
-                  </p>
-
-                  <div className="stripe-badge">
-                    <span>Secured by</span>
-                    <div className="stripe-logo-fake">stripe</div>
-                  </div>
-                </div>
-              )}
-
-              {paymentMethod === "paypal" && (
-                <div className="payment-card-box">
-                  <p style={{ fontSize: "0.9rem", marginBottom: "0.5rem" }}>
-                    On a real site, you&apos;d be redirected to PayPal&apos;s secure
-                    checkout to approve this payment.
-                  </p>
-                  <button
-                    type="button"
-                    className="paypal-button-fake"
-                    onClick={() =>
-                      alert("Demo PayPal flow – no real payment happening.")
-                    }
-                  >
-                    <span>Pay with</span>
-                    <span className="paypal-wordmark">PayPal</span>
-                  </button>
-                </div>
-              )}
-
-              {paymentMethod === "applepay" && (
-                <div className="payment-card-box">
-                  <p style={{ fontSize: "0.9rem", marginBottom: "0.5rem" }}>
-                    On supported devices, Apple Pay would appear as a native sheet here.
-                  </p>
-                  <button
-                    type="button"
-                    className="applepay-button-fake"
-                    onClick={() =>
-                      alert("Demo Apple Pay flow – no real payment happening.")
-                    }
-                  >
-                   <span>  Pay</span>
-                  </button>
-                </div>
-              )}
-
               <button
-                className="btn"
+                className="sia-primary-action sia-checkout-submit"
                 type="submit"
-                disabled={!hasItems}
+                disabled={!hasItems || submitting}
                 style={{ marginTop: "0.75rem" }}
               >
-                Pay securely with Stripe
+                {submitting ? "Connecting to Stripe…" : "Continue to secure payment"}
               </button>
+              {checkoutError && <p role="alert" className="sia-checkout-error">{checkoutError}</p>}
               {!hasItems && (
                 <p
                   style={{
@@ -318,8 +196,8 @@ export default function CheckoutPage() {
           </div>
 
           {/* Right: order summary */}
-          <aside className="card">
-            <h2 style={{ marginBottom: "0.5rem", fontSize: "1.15rem" }}>
+          <aside className="card sia-interior-card">
+            <span className="sia-eyebrow">YOUR BASKET</span><h2 className="sia-card-heading">
               Order summary
             </h2>
             {cart.length === 0 ? (

@@ -11,7 +11,8 @@ export default function ContactPage() {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    const formData = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
 
     const payload = {
       name: String(formData.get("name") || ""),
@@ -46,7 +47,7 @@ export default function ContactPage() {
         return;
       }
 
-      e.currentTarget.reset();
+      form.reset();
       setStatus("success");
       setFeedback("Thanks! Your message has been sent.");
     } catch (err) {
@@ -57,16 +58,16 @@ export default function ContactPage() {
   }
 
   return (
-    <>
-      <section className="page-hero">
-        <h1 className="page-hero-title">Let&apos;s talk coffee</h1>
+    <div className="sia-interior sia-contact-page">
+      <section className="sia-inner-hero"><div className="sia-container"><span className="sia-eyebrow">General enquiries · Wholesale · Support</span>
+        <h1 className="page-hero-title">Let&apos;s talk coffee<span className="sia-gold-dot">.</span></h1>
         <p className="page-hero-subtitle">
           Whether you&apos;re a home brewer with questions or a café looking for a roasting
           partner, we&apos;d love to hear from you.
-        </p>
+        </p></div>
       </section>
 
-      <section className="section">
+      <section className="sia-inner-section"><div className="sia-container">
         <div className="contact-layout">
           <div className="reveal-on-scroll">
             <div className="card">
@@ -171,7 +172,7 @@ export default function ContactPage() {
             />
           </div>
         </div>
-      </section>
-    </>
+      </div></section>
+    </div>
   );
 }

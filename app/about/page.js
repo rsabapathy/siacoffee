@@ -2,16 +2,16 @@ import Link from "next/link";
 
 export default function AboutPage() {
   return (
-    <>
-      <section className="page-hero">
-        <h1 className="page-hero-title">Our story &amp; sourcing</h1>
+    <div className="sia-interior sia-about">
+      <section className="sia-inner-hero"><div className="sia-container"><span className="sia-eyebrow">The story behind every cup</span>
+        <h1 className="page-hero-title">Our story<span className="sia-gold-dot">.</span></h1>
         <p className="page-hero-subtitle">
           Sia Coffee is a small roastery obsessed with traceable, transparent coffee that
           actually makes your mornings feel better.
-        </p>
+        </p></div>
       </section>
 
-      <section className="section">
+      <section className="sia-inner-section"><div className="sia-container">
         <div className="about-grid">
           {/* Text column */}
           <div className="reveal-on-scroll">
@@ -92,9 +92,9 @@ export default function AboutPage() {
             />
           </div>
         </div>
-      </section>
+      </div></section>
 
-      <section className="section">
+      <section className="sia-inner-section sia-about-wholesale"><div className="sia-container">
         <div className="subscription">
           <div className="subscription-inner reveal-on-scroll">
             <div className="subscription-highlight">Trade &amp; wholesale</div>
@@ -113,8 +113,8 @@ export default function AboutPage() {
             </Link>
           </div>
         </div>
-      </section>
-    </>
+      </div></section>
+    </div>
   );
 }
 

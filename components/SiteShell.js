@@ -98,88 +98,24 @@ function ChromeInner({ children }) {
 
   return (
     <>
-      {/* HEADER / NAV */}
-      <header>
-        <div className="page">
-          <nav className="nav">
-
-            <button
-              className="nav-toggle"
-              aria-label="Toggle navigation"
-              onClick={() => setNavOpen((v) => !v)}
-            >
-              <span></span>
-              <span></span>
-              <span></span>
-            </button>
-
-            <div className="nav-links">
-              <Link href="/" className={isActive("/") ? "active" : ""}>
-                Home
-              </Link>
-              <Link href="/shop" className={isActive("/shop") ? "active" : ""}>
-                Shop
-              </Link>
-              <Link href="/about" className={isActive("/about") ? "active" : ""}>
-                About
-              </Link>
-              <Link
-                href="/contact"
-                className={isActive("/contact") ? "active" : ""}
-              >
-                Contact
-              </Link>
-            </div>
-
-            <div className="logo">
-              {/* <span className="logo-dot" /> */}
-              <img 
-                src="/assets/img/siacoffeelogo.png"
-                alt="Sia Coffee bag and cup"
-                width="80" />
-                {/* Sia coffee */}
-            </div>
-
-            <div className="nav-cta">
-              {/* Mini cart button */}
-              <button
-                type="button"
-                className="cart-toggle"
-                aria-label="Open cart"
-                onClick={() => setCartOpen(true)}
-              >
-                <span>🛒</span>
-                {mounted && cartCount > 0 && (
-                  <span className="cart-badge">{cartCount}</span>
-                )}
-              </button>
-              
-              {mounted && user ? (
-                <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-                  <Link href="/account" className="account-toggle" aria-label="My account">
-                    <span className="account-icon">👤</span>
-                    <span className="account-name">{user.name?.split(" ")[0] || "Account"}</span>
-                  </Link>
-
-                  <button type="button" className="btn-ghost" onClick={logout}>
-                    Logout
-                  </button>
-                </div>
-              ) : (
-                <Link href="/auth/login" className="btn-ghost">
-                  Sign In
-                </Link>
-              )}
-              <Link href="/shop" className="btn">
-                Shop Now
-              </Link>
-            </div>
-          </nav>
+      {/* Responsive SIA navigation */}
+      <header className="sia-site-header">
+        <div className="sia-container sia-site-nav">
+          <Link href="/" className="sia-site-brand" aria-label="SIA Coffee home"><img src="/assets/design/logo.png" alt="SIA Coffee" /></Link>
+          <div className="sia-desktop-links"><Link href="/">Home</Link><Link href="/shop">Our coffees</Link><Link href="/about">Our story</Link><Link href="/contact">Contact</Link></div>
+          <div className="sia-site-actions">
+            {mounted && user ? <><Link href="/account" className="sia-account-link">{user.name?.split(" ")[0] || "Account"}</Link><button type="button" onClick={async()=>{await logout();window.location.assign("/");}} className="sia-account-link">Log out</button></> : <Link href="/auth/login" className="sia-account-link">Sign in</Link>}
+            <button type="button" className="sia-cart-button" aria-label="Open cart" onClick={()=>setCartOpen(true)}>Cart {mounted && cartCount > 0 ? `(${cartCount})` : ""}</button>
+            <button type="button" className="sia-menu-toggle" aria-label="Toggle navigation" aria-controls="sia-mobile-navigation" aria-expanded={navOpen} onClick={()=>setNavOpen(v=>!v)}><span/><span/><span/></button>
+          </div>
+        </div>
+        <div id="sia-mobile-navigation" className="sia-mobile-navigation" hidden={!navOpen}>
+          <Link href="/" onClick={()=>setNavOpen(false)}>Home</Link><Link href="/shop" onClick={()=>setNavOpen(false)}>Our coffees</Link><Link href="/about" onClick={()=>setNavOpen(false)}>Our story</Link><Link href="/contact" onClick={()=>setNavOpen(false)}>Contact</Link><Link href="/account" onClick={()=>setNavOpen(false)}>My account</Link>
         </div>
       </header>
 
       {/* MAIN CONTENT */}
-      <main className="page">{children}</main>
+      <main className="sia-main">{children}</main>
 
       {/* FOOTER */}
       <footer className="page">
@@ -189,7 +125,8 @@ function ChromeInner({ children }) {
             <Link href="/shop">Shop</Link>
             <Link href="/about">Story</Link>
             <Link href="/contact">Contact</Link>
-            <a href="#">Privacy</a>
+            <Link href="/privacy">Privacy</Link>
+            <Link href="/terms">Terms &amp; Conditions</Link>
           </div>
           <div className="social">
             <a href="#" aria-label="Instagram">

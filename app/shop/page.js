@@ -137,26 +137,18 @@ export default function ShopPage() {
   }, [activeCategory, products]);
 
   return (
-    <>
+    <div className="sia-interior sia-shop">
       {/* Page hero */}
-      <section className="page-hero">
-        <h1 className="page-hero-title">Shop our coffees</h1>
+      <section className="sia-inner-hero"><div className="sia-container"><span className="sia-eyebrow">SIA Coffee · Small-batch roastery</span>
+        <h1 className="page-hero-title">Our coffees<span className="sia-gold-dot">.</span></h1>
         <p className="page-hero-subtitle">
           Single origins, blends and decaf — all roasted in micro-batches and shipped
-          fresh from our London roastery.
-        </p>
+          fresh to your door.
+        </p></div>
       </section>
 
       {/* Controls + cart summary */}
-      <section className="section">
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "minmax(0, 2.2fr) minmax(0, 1fr)",
-            gap: "1.5rem",
-            alignItems: "flex-start"
-          }}
-        >
+      <section className="sia-inner-section"><div className="sia-container"><div className="sia-shop-layout">
           {/* Left: filters + products */}
           <div>
             <div className="shop-controls">
@@ -177,6 +169,8 @@ export default function ShopPage() {
               <div>Free UK shipping on orders over £30.</div>
             </div>
 
+            {loadingProducts && <p className="sia-shop-status">Loading our coffees…</p>}
+            {!loadingProducts && filteredProducts.length === 0 && <p className="sia-shop-status">No coffees found in this category.</p>}
             <div className="products-grid">
               {filteredProducts.map((product) => (
                 <article
@@ -196,7 +190,7 @@ export default function ShopPage() {
                     </div>
                     <button
                       type="button"
-                      className="btn-ghost"
+                      className="btn-ghost add-to-cart"
                       onClick={() =>
                         addItem({
                           id: product._id,
@@ -216,7 +210,7 @@ export default function ShopPage() {
           </div>
 
           {/* Right: cart summary (same data as drawer) */}
-          <aside className="card">
+          <aside className="card sia-cart-panel">
             <h2 style={{ marginBottom: "0.5rem", fontSize: "1.1rem" }}>
               Your cart
             </h2>
@@ -380,8 +374,8 @@ export default function ShopPage() {
               </>
             )}
           </aside>
-        </div>
+        </div></div>
       </section>
-    </>
+    </div>
   );
 }
